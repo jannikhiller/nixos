@@ -19,6 +19,7 @@
         fd
         git
         claude-code
+        codex
         devenv
         gh
       ];
