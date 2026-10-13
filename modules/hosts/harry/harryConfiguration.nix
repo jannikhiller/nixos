@@ -64,10 +64,27 @@
       # The release this machine was installed at; never bumped.
       system.stateVersion = "26.05";
 
-      # Surface's high-DPI internal panel needs upscaling.
       programs.niri.package = self'.packages.myNiri.wrap {
         settings.outputs = lib.mkForce {
-          "eDP-1".scale = 1.75;
+          "eDP-1" = {
+            scale = 1.75;
+            position = _: {
+              props = {
+                x = 103;
+                y = 1080;
+              };
+            };
+
+          };
+          "DP-1" = {
+            scale = 1;
+            position = _: {
+              props = {
+                x = 0;
+                y = 0;
+              };
+            };
+          };
         };
       };
 
