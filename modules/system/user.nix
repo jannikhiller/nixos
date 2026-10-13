@@ -26,6 +26,8 @@
           "networkmanager"
           "wheel"
           "video"
+          "scan"
+          "lp"
         ]
         # The group only exists when the gaming bundle is imported.
         ++ lib.optional config.programs.gamemode.enable "gamemode";
