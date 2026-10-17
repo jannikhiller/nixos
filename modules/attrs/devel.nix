@@ -19,6 +19,11 @@
         devenv hook fish -- fish | source
       '';
 
+      virtualisation.docker.rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+
       environment.systemPackages = with pkgs; [
         ripgrep
         fd
