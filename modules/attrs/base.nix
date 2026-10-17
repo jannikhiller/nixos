@@ -22,6 +22,7 @@
         inputs'.zen-browser.packages.default
         zotero
         kdePackages.okular
+        calibre
         wdisplays
 
         nautilus
