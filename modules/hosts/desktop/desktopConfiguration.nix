@@ -145,6 +145,9 @@
       # mkForce because the wrapper's single-output default would otherwise
       # merge alongside these rather than be replaced.
       programs.niri.package = self'.packages.myNiri.wrap {
+        # niri otherwise inhibits the power key and suspends; this hands it back
+        # to logind, whose default is poweroff.
+        settings.input.disable-power-key-handling = [ ];
         settings.outputs = lib.mkForce {
           "HDMI-A-1" = {
             scale = 1;
