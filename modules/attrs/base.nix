@@ -29,7 +29,10 @@
         showtime
         decibels
         loupe
+
+        teamviewer
       ];
+      services.teamviewer.enable = true;
 
       # printing/scanning
       hardware.sane.enable = true;
