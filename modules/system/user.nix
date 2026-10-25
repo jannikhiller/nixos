@@ -36,6 +36,15 @@
       home-manager.users.jannik = {
         home.stateVersion = config.system.stateVersion;
         programs.home-manager.enable = true;
+        programs.fish = {
+          enable = true;
+          shellAbbrs = {
+            nr = "sudo nixos-rebuild";
+            nrs = "sudo nixos-rebuild switch --flake ~/nixos";
+            wgon = "sudo systemctl start wg-quick-fritzbox.service";
+            wgoff = "sudo systemctl stop wg-quick-fritzbox.service";
+          };
+        };
       };
 
       sops.secrets = {
