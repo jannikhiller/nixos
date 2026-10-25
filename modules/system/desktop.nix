@@ -82,6 +82,22 @@
               package = pkgs.gnome-themes-extra;
               name = "Adwaita-dark";
             };
+            gtk3.bookmarks = [
+              "file:///home/jannik/syncthing"
+              "file:///home/jannik/syncthing/uni/ma"
+              "file:///home/jannik/Downloads"
+            ];
+          };
+
+          # Unmanaged, xdg-user-dirs-update points every XDG dir at $HOME as
+          # long as the directories are missing, leaving nautilus' sidebar empty.
+          xdg.userDirs = {
+            enable = true;
+            createDirectories = true;
+            desktop = null;
+            projects = null;
+            publicShare = null;
+            templates = null;
           };
         }
       ];
