@@ -14,6 +14,11 @@
         tmux
       ];
 
+      programs.fish.interactiveShellInit = ''
+        # Explicit fish bypasses devenv 2.3.1's broken shell session layer.
+        devenv hook fish -- fish | source
+      '';
+
       environment.systemPackages = with pkgs; [
         ripgrep
         fd
