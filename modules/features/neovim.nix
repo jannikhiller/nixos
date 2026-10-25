@@ -47,8 +47,12 @@
                   "AstroNvim/astrolsp",
                   ---@type AstroLSPOpts
                   opts = {
-                    servers = { "hls", "nixd", "tinymist" },
-                    config = {},
+                    servers = { "hls", "nixd", "tinymist", "typos_lsp" },
+                    config = {
+                      typos_lsp = {
+                        filetypes = { "typst" },
+                      },
+                    },
                   },
                 }
               '';
@@ -80,6 +84,7 @@
 
           nixd
           tinymist
+          typos-lsp
 
           # AstroNvim sets clipboard=unnamedplus; without a provider binary on
           # PATH that silently does nothing.
