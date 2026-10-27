@@ -37,7 +37,7 @@
       # printing/scanning
       hardware.sane.enable = true;
       services.avahi.enable = true;
-      services.avahi.nssmdns = true;
+      services.avahi.nssmdns4 = true;
     }
   );
 }
