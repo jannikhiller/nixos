@@ -91,6 +91,27 @@
       # The IPU3 camera's lens-focus VCM driver isn't autoloaded.
       boot.kernelModules = [ "dw9719" ];
 
+      # The Surface kernel (6.19) emits an ABI name current rustc rejects.
+      # Remove when its target generator gains the upstream softfloat fix.
+      boot.kernelPatches = [
+        {
+          name = "rust-softfloat-abi";
+          patch = pkgs.writeText "linux-rust-softfloat-abi.patch" ''
+            --- a/scripts/generate_rust_target.rs
+            +++ b/scripts/generate_rust_target.rs
+            @@ -197,7 +197,7 @@
+                 } else if cfg.has("X86_64") {
+                     ts.push("arch", "x86_64");
+                     if cfg.rustc_version_atleast(1, 86, 0) {
+            -            ts.push("rustc-abi", "x86-softfloat");
+            +            ts.push("rustc-abi", "softfloat");
+                     }
+                     ts.push(
+                         "data-layout",
+          '';
+        }
+      ];
+
       swapDevices = [
         {
           device = "/var/lib/swapfile";
