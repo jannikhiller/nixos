@@ -14,6 +14,10 @@
         tmux
       ];
 
+      # Codex 0.157's socket isolation rejects Btrfs device IDs that differ
+      # from mountinfo. Keep its /tmp rendezvous directory on tmpfs instead.
+      boot.tmp.useTmpfs = true;
+
       programs.fish.interactiveShellInit = ''
         # Explicit fish bypasses devenv 2.3.1's broken shell session layer.
         devenv hook fish -- fish | source
