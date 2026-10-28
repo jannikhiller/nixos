@@ -49,6 +49,13 @@
                   opts = {
                     servers = { "hls", "nixd", "tinymist", "typos_lsp" },
                     config = {
+                      tinymist = {
+                        settings = {
+                          tinymist = {
+                            projectResolution = "lockDatabase",
+                          },
+                        },
+                      },
                       typos_lsp = {
                         filetypes = { "typst" },
                       },
