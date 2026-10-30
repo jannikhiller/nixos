@@ -84,6 +84,9 @@
             "Pixel 10 Pro" = {
               id = "NSKUTN7-L67ZNFE-QWWJERD-VSLM2OP-MXUUP6R-GFD35JV-TKXBVUW-3OGCBQH";
             };
+            "kobo" = {
+              id = "Y2PTSAQ-TLAHIT7-YHRMZVL-GQNPKEF-VOPNAYD-4NWCJUX-AIAFKU4-3J44ZAP";
+            };
           };
           folders = {
             "main" = {
@@ -101,6 +104,15 @@
                 ".venv"
                 "a.out"
                 "target"
+              ];
+            };
+            "books" = {
+              path = "/home/jannik/books/";
+              id = "heiys-dk7fq";
+              devices = [
+                "echo"
+                "kobo"
+                "Pixel 10 Pro"
               ];
             };
           };
