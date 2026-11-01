@@ -189,6 +189,8 @@
             publicKey = "nKFJElLkeRgS0WqYt4TONILr5qFJia1+MA+wxyJMY0E=";
             presharedKeyFile = config.sops.secrets."harry-wireguard-psk".path;
             allowedIPs = [
+              "0.0.0.0/0"
+              "::/0"
               "192.168.178.0/24"
               "fd00::/64"
             ];
