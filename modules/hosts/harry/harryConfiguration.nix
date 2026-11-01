@@ -121,6 +121,42 @@
 
       services.thermald.enable = true;
 
+      # Duplicate playback to the two Bluetooth headphones when both are connected.
+      services.pipewire.extraConfig.pipewire."90-dual-bluetooth-headphones" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-combine-stream";
+            args = {
+              "combine.mode" = "sink";
+              "node.name" = "dual_bluetooth_headphones";
+              "node.description" = "Both Bluetooth headphones";
+              "combine.latency-compensate" = true;
+              "combine.props" = {
+                "audio.position" = [
+                  "FL"
+                  "FR"
+                ];
+              };
+              "stream.rules" = [
+                {
+                  matches = [
+                    {
+                      "media.class" = "Audio/Sink";
+                      "node.name" = "~bluez_output\\.AC_80_0A_CB_8C_32\\..*";
+                    }
+                    {
+                      "media.class" = "Audio/Sink";
+                      "node.name" = "~bluez_output\\.BC_3E_0B_21_5A_3A\\..*";
+                    }
+                  ];
+                  actions."create-stream" = { };
+                }
+              ];
+            };
+          }
+        ];
+      };
+
       # Battery-only, so not in the shared desktop module.
       services.power-profiles-daemon.enable = true;
 
