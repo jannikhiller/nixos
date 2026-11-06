@@ -20,12 +20,30 @@
                 builtin_ids = [
                   "kitty"
                   "niri"
+                  "gtk3"
+                  "gtk4"
+                  "qt"
+                  "kcolorscheme"
                 ];
+                enable_community_templates = true;
+                community_ids = [
+                  "zen-browser"
+                ];
+                user.tmux = {
+                  input_path = ./tmux.conf;
+                  output_path = "$XDG_CONFIG_HOME/tmux/themes/noctalia.conf";
+                  post_hook = "tmux source-file -q ~/.config/tmux/themes/noctalia.conf >/dev/null 2>&1 || true";
+                };
+                user.neovim = {
+                  input_path = ./neovim-colors.json;
+                  output_path = "$XDG_CONFIG_HOME/noctalia/colors.json";
+                };
               };
             };
 
             shell = {
               animation.speed = 2.0;
+              greeter_sync.auto_sync = true;
               panel.open_near_click_control_center = true;
             };
 

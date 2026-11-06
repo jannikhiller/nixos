@@ -70,6 +70,26 @@
                 }
               '';
             };
+            "nvim/lua/plugins/noctalia.lua" = {
+              text = ''
+                return {
+                  {
+                    "keremimo/noctalia.nvim",
+                    main = "noctalia",
+                    lazy = false,
+                    priority = 1000,
+                    opts = {
+                      auto_reload = true,
+                      transparent = false,
+                    },
+                  },
+                  {
+                    "AstroNvim/astroui",
+                    opts = { colorscheme = "noctalia" },
+                  },
+                }
+              '';
+            };
           };
         }
       ];

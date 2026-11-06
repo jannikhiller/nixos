@@ -85,32 +85,17 @@
 
           bind r display-message "tmux config is managed by Nix -- edit modules/features/tmux.nix"
 
-          # modes
-          setw -g clock-mode-colour colour5
-          setw -g mode-style 'fg=colour1 bg=#282828 bold'
-
-          # panes
-          set -g pane-border-style 'fg=#383838 bg=colour0'
-          set -g pane-active-border-style 'bg=colour0 fg=colour9'
-
           # statusbar
           set -g status-position bottom
           set -g status-justify left
-          set -g status-style 'bg=#282828 fg=colour137 dim'
           set -g status-left '''
           set -g status-right '''
           set -g status-left-length 20
 
-          setw -g window-status-current-style 'fg=colour1 bg=#383838 bold'
-          setw -g window-status-current-format ' #I#[fg=colour249]:#[fg=colour255]#W#[fg=colour249]#F '
+          setw -g window-status-current-format ' #I:#W#F '
+          setw -g window-status-format ' #I:#W#F '
 
-          setw -g window-status-style 'fg=colour9 bg=#282828'
-          setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
-
-          setw -g window-status-bell-style 'fg=colour255 bg=colour1 bold'
-
-          # messages
-          set -g message-style 'fg=colour232 bg=#dc9656 bold'
+          source-file -q ~/.config/tmux/themes/noctalia.conf
         '';
       };
     };
