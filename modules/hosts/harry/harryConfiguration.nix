@@ -121,15 +121,15 @@
 
       services.thermald.enable = true;
 
-      # Duplicate playback to the two Bluetooth headphones when both are connected.
-      services.pipewire.extraConfig.pipewire."90-dual-bluetooth-headphones" = {
+      # Duplicate playback to the Bluetooth headphones and built-in analog output.
+      services.pipewire.extraConfig.pipewire."90-combined-audio" = {
         "context.modules" = [
           {
             name = "libpipewire-module-combine-stream";
             args = {
               "combine.mode" = "sink";
-              "node.name" = "dual_bluetooth_headphones";
-              "node.description" = "Both Bluetooth headphones";
+              "node.name" = "combined_audio";
+              "node.description" = "Combined audio";
               "combine.latency-compensate" = true;
               "combine.props" = {
                 "audio.position" = [
@@ -148,6 +148,10 @@
                       "media.class" = "Audio/Sink";
                       "node.name" = "~bluez_output\\.BC_3E_0B_21_5A_3A\\..*";
                     }
+                    {
+                      "media.class" = "Audio/Sink";
+                      "node.name" = "alsa_output.pci-0000_00_1f.3.analog-stereo";
+                    }
                   ];
                   actions."create-stream" = { };
                 }
@@ -163,6 +167,15 @@
       environment.systemPackages = with pkgs; [
         libcamera
         v4l-utils
+        (writeShellScriptBin "combined-audio-volume" ''
+          export PATH=${
+            lib.makeBinPath [
+              pipewire
+              wireplumber
+            ]
+          }:$PATH
+          exec ${python3}/bin/python3 ${./combinedAudioVolume.py} "$@"
+        '')
       ];
 
       wslMount.vhdxPath = "/mnt/c/Users/janni/AppData/Local/Packages/46932SUSE.openSUSETumbleweed_022rs5jcyhyac/LocalState/ext4.vhdx";
