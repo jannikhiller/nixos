@@ -35,6 +35,7 @@
 
           tab_bar_style = "hidden";
           hide_window_decorations = "yes";
+          background_opacity = "0.92";
 
           # base16-default-dark (Chris Kempson, http://chriskempson.com)
           background = "#181818";

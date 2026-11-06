@@ -93,6 +93,8 @@
           {
             spawn-at-startup = [ noctalia ];
 
+            extraConfig = ''include optional=true "~/.config/niri/noctalia.kdl"'';
+
             xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
             # Matches XCURSOR_* in system/desktop.nix; without an explicit theme
@@ -117,9 +119,22 @@
             layout = {
               gaps = 5;
               center-focused-column = "never";
+              focus-ring.off = _: { };
+              border = {
+                on = _: { };
+                width = 2;
+              };
             };
 
             window-rules = [
+              {
+                geometry-corner-radius = 12;
+                clip-to-geometry = true;
+              }
+              {
+                matches = [ { app-id = "^kitty$"; } ];
+                draw-border-with-background = false;
+              }
               {
                 matches = [ { app-id = "^zen"; } ];
                 default-column-width.proportion = 0.666667;

@@ -13,7 +13,13 @@
         programs.noctalia = {
           enable = true;
           settings = {
-            theme.builtin = "Ayu";
+            theme = {
+              builtin = "Ayu";
+              templates = {
+                enable_builtin_templates = true;
+                builtin_ids = [ "niri" ];
+              };
+            };
 
             shell = {
               animation.speed = 2.0;
