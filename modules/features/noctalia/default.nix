@@ -45,6 +45,7 @@
               animation.speed = 2.0;
               greeter_sync.auto_sync = true;
               panel.open_near_click_control_center = true;
+              polkit_agent = true;
             };
 
             weather.enabled = false;
