@@ -41,6 +41,8 @@
           shellAbbrs = {
             nr = "sudo nixos-rebuild";
             nrs = "sudo nixos-rebuild switch --flake ~/nixos";
+            # After jj commit, @ is empty; push its parent instead.
+            jpush = "jj bookmark advance --to 'exactly(heads((@ | @-) ~ empty()), 1)' && jj git push --revision 'exactly(heads((@ | @-) ~ empty()), 1)'";
             wgon = "sudo systemctl start wg-quick-fritzbox.service";
             wgoff = "sudo systemctl stop wg-quick-fritzbox.service";
           };
