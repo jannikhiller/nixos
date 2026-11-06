@@ -89,9 +89,4 @@
     ];
   });
 
-  perSystem =
-    { pkgs, ... }:
-    {
-      packages.myNoctalia = pkgs.noctalia;
-    };
 }

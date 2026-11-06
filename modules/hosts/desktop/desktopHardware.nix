@@ -124,11 +124,5 @@ _: {
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-      # Steam's runtime and many Proton prefixes are 32-bit. programs.steam sets
-      # these too, but graphics is a property of the machine, not of a bundle.
-      hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
     };
 }

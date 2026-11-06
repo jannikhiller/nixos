@@ -28,7 +28,7 @@
         settings =
           let
             kitty = lib.getExe self'.packages.myKitty;
-            noctalia = lib.getExe self'.packages.myNoctalia;
+            noctalia = lib.getExe pkgs.noctalia;
             wpctl = lib.getExe' pkgs.wireplumber "wpctl";
             brightnessctl = lib.getExe pkgs.brightnessctl;
             playerctl = lib.getExe pkgs.playerctl;
