@@ -1,5 +1,6 @@
 # Repository guidance
 
+- Use subagents for useful subtasks, choosing a model appropriate to each subtask's complexity: lighter models for routine work and stronger models for difficult reasoning, debugging, or design.
 - Keep this personal NixOS config simple. Prefer direct, literal configuration over options or shared modules with only one consumer. Generalize when a third use makes it worthwhile.
 - Put machine-specific settings, hardware workarounds, and `system.stateVersion` in the relevant host. Keep comments brief and focused on why something is needed.
 - Use `jj` for version control; do not use `git add` or `git commit`. Commit messages follow `scope: lowercase summary`.
