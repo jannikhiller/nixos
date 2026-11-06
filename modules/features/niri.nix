@@ -95,6 +95,8 @@
 
             extraConfig = ''include optional=true "~/.config/niri/noctalia.kdl"'';
 
+            hotkey-overlay.hide-not-bound = [ ];
+
             xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
             # Matches XCURSOR_* in system/desktop.nix; without an explicit theme
@@ -148,9 +150,18 @@
             # Equal), and "["/"]" are AltGr (Mod5) on 8/9.
             binds = {
               # apps
-              "Mod+Return".spawn-sh = "${kittyInCwd}";
-              "Mod+S".spawn-sh = "${noctalia} msg panel-toggle launcher";
-              "Mod+V".spawn-sh = "${noctalia} msg panel-toggle clipboard";
+              "Mod+Return" = _: {
+                props.hotkey-overlay-title = "Terminal · current folder";
+                content.spawn-sh = "${kittyInCwd}";
+              };
+              "Mod+S" = _: {
+                props.hotkey-overlay-title = "App launcher";
+                content.spawn-sh = "${noctalia} msg panel-toggle launcher";
+              };
+              "Mod+V" = _: {
+                props.hotkey-overlay-title = "Clipboard history";
+                content.spawn-sh = "${noctalia} msg panel-toggle clipboard";
+              };
 
               # help / overview
               "Mod+Shift+7".show-hotkey-overlay = [ ];
@@ -273,7 +284,10 @@
               "XF86AudioPrev".spawn-sh = "${playerctl} previous";
 
               # session
-              "Super+Alt+L".spawn-sh = "${noctalia} msg session lock";
+              "Super+Alt+L" = _: {
+                props.hotkey-overlay-title = "Lock screen";
+                content.spawn-sh = "${noctalia} msg session lock";
+              };
               "Mod+Shift+E".quit = [ ];
               "Ctrl+Alt+Delete".quit = [ ]; # backup in case Mod is unavailable (e.g. stuck key)
               "Mod+Shift+P".power-off-monitors = [ ];
