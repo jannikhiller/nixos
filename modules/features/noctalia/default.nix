@@ -17,7 +17,10 @@
               builtin = "Ayu";
               templates = {
                 enable_builtin_templates = true;
-                builtin_ids = [ "niri" ];
+                builtin_ids = [
+                  "kitty"
+                  "niri"
+                ];
               };
             };
 
