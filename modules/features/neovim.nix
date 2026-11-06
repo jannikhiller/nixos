@@ -42,12 +42,18 @@
               '';
             };
             "nvim/lua/plugins/systemlsps.lua" = {
-              text = ''
+              text = /* lua */ ''
                 return {
                   "AstroNvim/astrolsp",
                   ---@type AstroLSPOpts
                   opts = {
                     servers = { "hls", "nixd", "tinymist", "typos_lsp" },
+                    root_handlers = {
+                      tinymist = function(bufnr)
+                        local utils = require("astrolsp.utils")
+                        return utils.root_pattern("typst.toml", ".git")(bufnr)
+                      end,
+                    },
                     config = {
                       tinymist = {
                         settings = {
