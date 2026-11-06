@@ -96,6 +96,7 @@
             extraConfig = ''include optional=true "~/.config/niri/noctalia.kdl"'';
 
             hotkey-overlay.hide-not-bound = [ ];
+            debug.honor-xdg-activation-with-invalid-serial = [ ];
 
             xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
