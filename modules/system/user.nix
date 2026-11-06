@@ -38,6 +38,7 @@
         programs.home-manager.enable = true;
         programs.fish = {
           enable = true;
+          interactiveShellInit = builtins.readFile ./tide.fish;
           shellAbbrs = {
             nr = "sudo nixos-rebuild";
             nrs = "sudo nixos-rebuild switch --flake ~/nixos";
