@@ -1,7 +1,6 @@
 { self, ... }: {
   flake.nixosModules.desktop =
     {
-      config,
       pkgs,
       lib,
       ...
@@ -15,14 +14,9 @@
         user
       ];
       services = {
-        greetd = {
+        displayManager.noctalia-greeter = {
           enable = true;
-          settings = {
-            default_session = {
-              command = "${config.programs.niri.package}/bin/niri-session";
-              user = "jannik";
-            };
-          };
+          settings.keyboard.layout = "de";
         };
         xserver.xkb = {
           layout = "de";
