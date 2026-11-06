@@ -39,7 +39,7 @@
         };
 
         extraConfig = ''
-          globinclude ''${HOME}/.config/kitty/themes/noctalia.conf
+          include ''${HOME}/.config/kitty/themes/noctalia.conf
         '';
 
       };
