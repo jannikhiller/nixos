@@ -235,10 +235,22 @@
               "Mod+Print".screenshot-window = [ ];
 
               # media keys
-              "XF86AudioRaiseVolume".spawn-sh = "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-              "XF86AudioLowerVolume".spawn-sh = "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-              "XF86AudioMute".spawn-sh = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-              "XF86AudioMicMute".spawn-sh = "${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+              "XF86AudioRaiseVolume" = _: {
+                props.allow-when-locked = true;
+                content.spawn-sh = "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+              };
+              "XF86AudioLowerVolume" = _: {
+                props.allow-when-locked = true;
+                content.spawn-sh = "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+              };
+              "XF86AudioMute" = _: {
+                props.allow-when-locked = true;
+                content.spawn-sh = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+              };
+              "XF86AudioMicMute" = _: {
+                props.allow-when-locked = true;
+                content.spawn-sh = "${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+              };
               "XF86MonBrightnessUp".spawn-sh = "${brightnessctl} set 5%+";
               "XF86MonBrightnessDown".spawn-sh = "${brightnessctl} set 5%-";
               "XF86AudioPlay".spawn-sh = "${playerctl} play-pause";
@@ -246,6 +258,7 @@
               "XF86AudioPrev".spawn-sh = "${playerctl} previous";
 
               # session
+              "Super+Alt+L".spawn-sh = "${noctalia} msg session lock";
               "Mod+Shift+E".quit = [ ];
               "Ctrl+Alt+Delete".quit = [ ]; # backup in case Mod is unavailable (e.g. stuck key)
               "Mod+Shift+P".power-off-monitors = [ ];
